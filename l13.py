@@ -52,20 +52,26 @@ class List:
         self.size += 1
 
     def find_by_num(self, num):
+        names = ""
         current = self.head
-        while current.next is not None and current.next.num != num:
+        while current.next is not None:
             current = current.next
-        if current.next is None:
+            if current.num == num:
+                names += current.sn + ' ' + current.fn + ' ' + current.p + "\n"
+        if names == "":
             return '-1'
-        return current.next.sn + ' ' + current.next.fn + ' ' + current.next.p
+        return names
 
     def find_by_sn(self, sn):
+        nums = ""
         current = self.head
-        while current.next is not None and current.next.sn != sn:
+        while current.next is not None:
             current = current.next
-        if current.next is None:
+            if current.sn == sn:
+                nums += current.num + ' | ' + current.sn + ' ' + current.fn + ' ' + current.p + "\n"
+        if nums == "":
             return '-1'
-        return current.next.num
+        return nums
 
     def to_string(self):
         out = ''
